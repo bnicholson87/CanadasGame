@@ -1,0 +1,57 @@
+.wrapper {
+    display: flex;
+    width: 100%;
+}
+
+
+.components{
+    font: 24pt;
+    text-align: center;
+}
+.list-group-item {
+    color: white;
+    font-size: 24pt;
+    background-color:red;
+}
+#active {
+    background: white;
+    color: red;
+    border: black;
+}
+header {
+    text-align: center;
+    font-size:40pt;
+    color: red;
+    border-bottom: solid 10px black;
+    margin-left: 0px;
+}
+
+.card {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    margin-left: 8px;
+    margin-right: 5px;
+    border: solid black 1px;
+}
+.registration {
+ background-image: url("Assets/puck.jpg");
+}
+#sidebar {
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 999;
+    background: red;
+    color: #fff;
+    transition: all 0.3s;
+    padding: 10px;
+}
+#input {
+    border: solid black 2px;
+    margin: 10px;
+    margin-right: 20px;
+    float: right;
+
+}

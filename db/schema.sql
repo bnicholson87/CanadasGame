@@ -27,7 +27,7 @@ CREATE TABLE player (
     street VARCHAR (100) NOT NULL,
     city VARCHAR (100) NOT NULL,
     province VARCHAR (10) NOT NULL,
-    postal_code VARCHAR (6) NOT NULL,
+    postal_code VARCHAR (7) NOT NULL,
     friend_first_name VARCHAR (100),
     friend_last_name VARCHAR (100),
     position VARCHAR (100) NOT NULL,

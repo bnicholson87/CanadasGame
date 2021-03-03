@@ -60,7 +60,7 @@ app.post('/api/player/new', function(req, res){
     // writing player list to file - for now
     fs.writeFileSync(savePlayers, JSON.stringify(playersList))
     
-    res.send({ message: `Saved: ${newPlayerData.fname}` })
+    res.send({ message: `Saved: ${newPlayerData.lname}` })
     
     console.log(`this is the full list`, playersList)
     console.log(`this is the new additon`, newPlayerData)

@@ -15,7 +15,17 @@ async function addPlayer( event ){
     console.log(`button clicked`)
 
     const playerData = {
-        fname: document.querySelector('#fname').value,
+        lname: document.querySelector('#lname').value,
+        dob: document.querySelector('#dob').value,
+        email: document.querySelector('#email').value,
+        street: document.querySelector('#street').value,
+        city: document.querySelector('#city').value,
+        prov: document.querySelector('#prov').value,
+        postal: document.querySelector('#postal').value,
+        friname1: document.querySelector('#friname1').value,
+        pos: document.querySelector('#pos').value,
+        skill: document.querySelector('#skill').value,
+        coach: document.querySelector('#coach:checked')!==null,
 
     }
 

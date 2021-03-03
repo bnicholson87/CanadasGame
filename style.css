@@ -238,6 +238,23 @@ header {
 #floatingSelectGrid{
     margin-left: 10px;
 }
+#playerCard{
+ width: 80px;
+ margin-left: 5px;
+ padding: 10px;
+ margin: 5 px;
+ border-left: solid black 1px;
+ border-radius: 2px;
+}
+.img {
+    min-width: 100%;
+    width: auto;
+    height: auto;
+}
+h4 {
+    font-size: 14pt;
+    color: red;
+}
 
 /* ---------------------------------------------------
     MEDIAQUERIES

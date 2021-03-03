@@ -27,7 +27,7 @@
               <h3>Canada's Game</h3>
             </div>
             <ul class="list-unstyled components">
-                <li class="active">
+                <li >
                     <a href="index.html">Home</a>
                 </li>
                 <li>
@@ -37,7 +37,7 @@
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Teams</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li>
-                            <a href="Leafs.html">Leafs</a>
+                            <a class="active" href="#">Leafs</a>
                         </li>
                         <li>
                             <a href="#">Canadiens</a>
@@ -71,7 +71,7 @@
             </ul>
         </nav>
         <!-- Page Content -->
-        <div id="content">
+        <div id="content" id="leafs">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
                     <button type="button" id="sidebarCollapse" class="navbar-btn">
@@ -83,39 +83,69 @@
                         <i class="fas fa-align-justify"></i>
                     </button>
             
-                    <header> Canada's Game - Let's Go </header>
+                    <header> Leafs</header>
                 </div>
             </nav>
-                <div class="row">
-                    <img src="assets/ice.jpg" alt="awesome rink picture">
-                </div>
-                <!-- feed from social media/api -->
-                <div class="row g-4">
+<!-- Team information -->
+            <div class="container">
+                <div class="row g-4" id="forwards">
                     <div class="card-group">
-                        <div class="card">
-                            <img class="card-img-top" src="..." alt="Card image cap">
+                        <div class="card" id="playerCard"style="width: 18rem;">
+                            <img src="./Assets/Sheldon.jpeg" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                              <h5 class="card-title" id="playerName">Sheldon Cooper</h5>
+                              <h4 class="card-title" id="position">Forward</h4>
+                              <a href="#" class="btn btn-primary">Edit</a>
+                              <a href="#" class="btn btn-primary">Delete</a>
                             </div>
                         </div>
-                        <div class="card">
-                            <img class="card-img-top" src="..." alt="Card image cap">
+                        <div class="card" id="playerCard" style="width: 18rem;">
+                            <img src="./Assets/Piggy.jpeg" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                              <h5 class="card-title" id="playerName">Miss Piggy</h5>
+                              <h4 class="card-title" id="position">Forward</h4>
+                              <a href="#" class="btn btn-primary">Edit</a>
+                              <a href="#" class="btn btn-primary">Delete</a>
                             </div>
                         </div>
-                        <div class="card">
-                            <video width="320" height="240" autoplay muted>
-                                <source src="" type="video/mp4" id="video0">
-                               Your browser does not support the video tag.
-                            </video>
+                        <div class="card" id="playerCard" style="width: 18rem;">
+                            <img src="" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <h5 class="card-title" id="title0">Card title</h5>
-                               <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                              <h5 class="card-title" id="playerName"></h5>
+                              <h4 class="card-title" id="position"></h4>
+                              <a href="#" class="btn btn-primary">Edit</a>
+                              <a href="#" class="btn btn-primary">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-4" id="defence">
+                    <div class="card-group">
+                        <div class="card" id="playerCard" style="width: 18rem;">
+                            <img src="" class="card-img-top" alt="...">
+                            <div class="card-body">
+                              <h5 class="card-title" id="playerName"></h5>
+                              <h4 class="card-title" id="position"></h4>
+                              <a href="#" class="btn btn-primary">Edit</a>
+                              <a href="#" class="btn btn-primary">Delete</a>
+                            </div>
+                        </div>
+                        <div class="card" id="playerCard" style="width: 18rem;">
+                            <img src="" class="card-img-top" alt="...">
+                            <div class="card-body">
+                              <h5 class="card-title" id="playerName"></h5>
+                              <h4 class="card-title" id="position"></h4>
+                              <a href="#" class="btn btn-primary">Edit</a>
+                              <a href="#" class="btn btn-primary">Delete</a>
+                            </div>
+                        </div>
+                        <div class="card" id="playerCard" style="width: 18rem;">
+                            <img src="" class="card-img-top" alt="...">
+                            <div class="card-body">
+                              <h5 class="card-title" id="playerName"></h5>
+                              <h4 class="card-title" id="position"></h4>
+                              <a href="#" class="btn btn-primary">Edit</a>
+                              <a href="#" class="btn btn-primary">Delete</a>
                             </div>
                         </div>
                     </div>

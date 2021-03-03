@@ -1,0 +1,76 @@
+markers = [
+    {
+      "name": "Royal Ontario Museum",
+      "url": "https://en.wikipedia.org/wiki/Royal_Ontario_Museum",
+      "lat": 43.667679,
+      "lng": -79.394809
+    },
+    {
+      "name": "Casa Loma",
+      "url": "https://en.wikipedia.org/wiki/Casa_Loma",
+      "lat": 43.6781,
+      "lng": -79.4095
+    },
+    {
+      "name": "Musée d'art contemporain de Baie-Saint-Paul",
+      "url": "https://www.macbsp.com",
+      "lat":  47.439892,
+      "lng": -70.506545
+    },
+    {
+      "name": "Walter Phillips Gallery",
+      "url": "https://www.banffcentre.ca/walter-phillips-gallery",
+      "lat": 51.1717,
+      "lng": -115.5611
+    },
+    {
+      "name": "MacLaren Art Centre",
+      "url": "https://maclarenart.com",
+      "lat":  44.39010,
+      "lng":  -79.68502
+    },
+    {
+      "name": "Peel Art Gallery, Museum and Archives",
+      "url": "pama.peelregion.ca",
+      "lat":  43.68516,
+      "lng":  -79.75712
+    },
+    {
+      "name": "Art Gallery of Burlington",
+      "url": "https://artgalleryofburlington.com/",
+      "lat":  43.1915,
+      "lng":  -79.4802
+    },
+    {
+      "name": "The Glenbow Museum",
+      "url": "https://www.glenbow.org",
+      "lat":  51.24192,
+      "lng":  -114.34008
+    },
+    {
+      "name": "Art Gallery of Alberta",
+      "url": "youraga.ca",
+      "lat":  53.54491,
+      "lng":  -113.48869
+    },
+    {
+      "name": "Art Gallery of Nova Scotia",
+      "url": "artgalleryofnovascotia.ca",
+      "lat":  44.385283,
+      "lng":  -63.342154
+    },
+    {
+      "name": "Art Gallery of Hamilton",
+      "url": "https://artgalleryofhamilton.com",
+      "lat":  43.2575,
+      "lng":  -79.872222
+    },
+    {
+      "name": "McMaster Museum of Art",
+      "url": "https://museum.mcmaster.ca",
+      "lat":  43.26266,
+      "lng":  -79.91803
+    },
+    
+ ];
+

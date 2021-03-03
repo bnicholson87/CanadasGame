@@ -87,10 +87,10 @@
             </nav>
             <!-- Registration Input -->
             <div class="container" id="input">
-                <form  action="/player" method="POST" class="row g-3 needs-validation" novalidate>
+                <form  action="/api/player/new" method="post" class="row g-3 needs-validation" novalidate>
                     <div class="col-md-4">
                       <label for="validationCustom01" class="form-label">First name</label>
-                      <input name="first_name" type="text" class="form-control" id="validationCustom01" value="Mark" required>
+                      <input id="fname" name="first_name" type="text" class="form-control" id="validationCustom01" value="Mark" required>
                       <div class="valid-feedback">
                         Looks good!
                       </div>
@@ -193,8 +193,10 @@
                         </div>
                       </div>
                     <div class="col-12">
-                      <button class="btn btn-primary" type="submit">Submit form</button>
+                      <button onClick="addPlayer(event)" class="btn btn-primary" type="submit">Submit form</button>
                     </div>
+                    <!--Bill's Testing-->
+                    <div id= "#playersinformation"> </div>
                     
                 </form>
             </div>
@@ -215,6 +217,9 @@
              });
          });
      </script>
+
+
+     <script src="script.js"></script>
 
 </body>
 </html>

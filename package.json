@@ -1,7 +1,6 @@
 {
   "name": "project2-template",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
   "directories": {
     "doc": "docs"
@@ -25,5 +24,6 @@
     "express": "^4.17.1",
     "moment": "^2.27.0",
     "mysql": "^2.18.1"
-  }
+  },
+  "description": ""
 }

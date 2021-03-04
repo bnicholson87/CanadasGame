@@ -54,19 +54,26 @@ app.post('/api/player/new', upload.single('avatar'), async function(req, res){
     console.log(`[submit button pushed] Here is the combined object with forma and photo details`, newfullPlayerDetails)
 
 
-    var firstName = req.body.first_name;
-    var lastName = req.body.last_name;
-    let birthDate = req.body.birth_date;
-    var email = req.body.email;
-    var street = req.body.street;
-    var city = req.body.city;
-    var postalCode = req.body.postal_code;
-    var province = req.body.province;
-    var friendName = req.body.friend_name;
-    var position = req.body.position;
-    var skill = req.body.experience;
-    var coach = req.body.coach;
-    const result = await orm.newPlayer(firstName, lastName, birthDate, email, street, city, province, postalCode, friendName, position, skill)
+    const firstName = req.body.first_name;
+    const lastName = req.body.last_name;
+    const birthDate = req.body.birth_date;
+    const email = req.body.email;
+    const street = req.body.street;
+    const city = req.body.city;
+    const postalCode = req.body.postal_code;
+    const province = req.body.province;
+    const friendName = req.body.friend_name;
+    const position = req.body.position;
+    const skill = req.body.experience;
+    const coach = req.body.coach;
+    const fieldname = req.file.fieldname;
+    const originalname = req.file.originalname;
+    const encoding = req.file.encoding;
+    const mimetype = req.file.mimetype;
+    const destination = req.file.destination;
+    const filename = req.file.filename;
+    const path = req.file.path;
+    const result = await orm.newPlayer(firstName, lastName, birthDate, email, street, city, province, postalCode, friendName, position, skill, fieldname, originalname, encoding, mimetype, destination, filename, path)
 
     console.log( result )
 

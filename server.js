@@ -53,7 +53,7 @@ app.post('/api/player/new', upload.single('avatar'), async function(req, res){
     }
     console.log(`[submit button pushed] Here is the combined object with forma and photo details`, newfullPlayerDetails)
 
-
+    // req.body fields to constansts
     const firstName = req.body.first_name;
     const lastName = req.body.last_name;
     const birthDate = req.body.birth_date;
@@ -66,6 +66,7 @@ app.post('/api/player/new', upload.single('avatar'), async function(req, res){
     const position = req.body.position;
     const skill = req.body.experience;
     const coach = req.body.coach;
+    // req.file fields to constants - nothing is passed if no pic uplaoded
     const fieldname = req.file.fieldname;
     const originalname = req.file.originalname;
     const encoding = req.file.encoding;
@@ -73,6 +74,8 @@ app.post('/api/player/new', upload.single('avatar'), async function(req, res){
     const destination = req.file.destination;
     const filename = req.file.filename;
     const path = req.file.path;
+
+    
     const result = await orm.newPlayer(firstName, lastName, birthDate, email, street, city, province, postalCode, friendName, position, skill, fieldname, originalname, encoding, mimetype, destination, filename, path)
 
     console.log( result )
@@ -87,7 +90,7 @@ app.post('/api/player/new', upload.single('avatar'), async function(req, res){
     // writing player JSON list to a file
     fs.writeFileSync(savePlayers, JSON.stringify(playersList))
 
-    res.send(req.body)
+    res.send(newfullPlayerDetails)
 
     
     

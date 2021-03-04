@@ -181,8 +181,19 @@
                  console.log(`this is the result of the getTeam`, result)
                  //put result data into html cards
 
+                result.forEach(result=>{
+                    document.querySelector('#playerName').innerHTML += `${result.first_name} + ${results.last_name}`
+                    document.querySelector('#position').innerHTML += `${result.position}`
+                    docuement.querySelector('.card-img-top').src+="...."
+
+
+
+                })
+
+
+
              }
-             getTeam()
+             getTeam(name)
          });
      </script>
 </body>

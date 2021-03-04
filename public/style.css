@@ -255,6 +255,19 @@ h4 {
     font-size: 14pt;
     color: red;
 }
+#friend {
+    margin-top: 30px;
+}
+.carousel {
+    border: solid 1px black;
+    border-radius: 2px;
+    margin: 20px;
+    float: left;
+    padding: 20px;
+}
+h4 {
+    margin-top: 20px;
+}
 
 /* ---------------------------------------------------
     MEDIAQUERIES

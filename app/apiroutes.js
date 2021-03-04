@@ -31,8 +31,10 @@ function router (app){
     
     
     
-    app.get(`/api/:teamname`, async function(req, res){
-        let teamPlayers = orm.getTeam(req.params.teamname)
+    app.get('/api/:teamname', async function(req, res){
+        console.log(req.params.teamname)
+        let teamPlayers = await orm.getTeam(req.params.teamname)
+        console.log(teamPlayers)
         res.send(teamPlayers)
     })
 

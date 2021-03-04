@@ -7,6 +7,9 @@ const fs = require('fs')
 // var apiroutes = require('./routes/apiroutes.js')
 
 const express = require('express')
+const multer  = require('multer')
+const upload = multer({ dest: 'uploads/' })
+
 // const apiRouter = require('./app/router')
 const app = express()
 
@@ -49,23 +52,29 @@ app.get('/api/player', function(req, res){
 })
 
 
-
-app.post('/api/player/new', function(req, res){
-    const newPlayerData = req.body
-    console.log(`submit button pushed adding`, newPlayerData)
+// post adjusted to account for photo upload
+app.post('/api/player/new', upload.single('avatar'), function(req, res){
     
-    // adding to player list JSON
-    playersList.push(newPlayerData)
+    // this is a combined object which includes the photo details and the form post details
+    const newPlayerData = req.body
+    const newPlayerPhoto = req.file
+    const newfullPlayerDetails = {
+        ...newPlayerData,
+        ...newPlayerPhoto
+    }
+    console.log(`[submit button pushed] Here is the combined object with forma and photo details`, newfullPlayerDetails)
 
-    // writing player list to file - for now
+           
+    // adding to player and file details to JSON list
+    playersList.push(newfullPlayerDetails)
+
+    // writing player JSON list to a file
     fs.writeFileSync(savePlayers, JSON.stringify(playersList))
     
-    res.send({ message: `Saved: ${newPlayerData.lname}` })
-    
-    console.log(`this is the full list`, playersList)
-    console.log(`this is the new additon`, newPlayerData)
    
 }) 
+
+
 
 
 

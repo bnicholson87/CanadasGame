@@ -87,7 +87,7 @@
             </nav>
             <!-- Registration Input -->
             <div class="container" id="input">
-                <form  action="/api/player/new" method="post" class="row g-3 needs-validation" novalidate>
+                  <form  action="/api/player/new" method="post" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
                     <div class="col-md-4">
                       <label for="validationCustom01" class="form-label">First name</label>
                       <input id="fname" name="first_name" type="text" class="form-control" id="validationCustom01" value="Mark" required>
@@ -190,12 +190,22 @@
                           <label class="form-check-label" for="flexCheckIndeterminate">
                             I would like to be a coach
                           </label>
+
                         </div>
                       </div>
+                      <div class="col-12">
+                        <input type="file" class="form-control-file" name="avatar" />
+                      </div>  
+                 
+
                     <div class="col-12">
-                      <button onClick="addPlayer(event)" class="btn btn-primary" type="submit">Submit form</button>
+                      <input type="submit" value="Submit form!" class="btn btn-primary"> 
                     </div>
-                    <!--Bill's Testing-->
+
+
+
+                                 
+
                     <div id= "#playersinformation"> </div>
                     
                 </form>

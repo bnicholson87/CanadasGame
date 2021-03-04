@@ -2,7 +2,6 @@
 //     res.send('/registration.html');
 // })
 
-const fs = require('fs')
 
 const express = require("express");
 const app = express();
@@ -11,27 +10,13 @@ const app = express();
 
 var orm = require('../config/orm.js')
 
-// saving JSON to file
-const savePlayers = './.playersList.json'
-
-
-// Data =======================================================
-let playersList = fs.existsSync(savePlayers) ?
-    JSON.parse( fs.readFileSync(savePlayers) ) : []
 
 
 
 
 // Routes (Endpoints)
 
-app.post('/api/player/new', function(req, res){
-    const newPlayerData = req.body
-    console.log(`submit button pushed adding`, newPlayerData)
-    playersList.push(newPlayerData)
-    fs.writeFileSync(savePlayers, JSON.stringify(playersList))
-    res.send(`saved`, newPlayerData)
-   
-}) 
+
 
 
 // module.exports = function(app){

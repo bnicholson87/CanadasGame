@@ -67,13 +67,13 @@ app.post('/api/player/new', upload.single('avatar'), async function(req, res){
     const skill = req.body.experience;
     const coach = req.body.coach;
     // req.file fields to constants - nothing is passed if no pic uplaoded
-    const fieldname = req.file.fieldname;
-    const originalname = req.file.originalname;
-    const encoding = req.file.encoding;
-    const mimetype = req.file.mimetype;
-    const destination = req.file.destination;
-    const filename = req.file.filename;
-    const path = req.file.path;
+    const fieldname = " " || req.file.fieldname;
+    const originalname = " " || req.file.originalname;
+    const encoding = " " || req.file.encoding;
+    const mimetype = " " || req.file.mimetype;
+    const destination = " " || req.file.destination;
+    const filename = " " || req.file.filename;
+    const path = " " || req.file.path;
 
     
     const result = await orm.newPlayer(firstName, lastName, birthDate, email, street, city, province, postalCode, friendName, position, skill, fieldname, originalname, encoding, mimetype, destination, filename, path)

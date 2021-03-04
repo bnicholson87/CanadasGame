@@ -89,67 +89,12 @@
 <!-- Team information -->
             <div class="container">
                 <div class="row g-4" id="forwards">
-                    <div class="card-group">
-                        <div class="card" id="playerCard"style="width: 18rem;">
-                            <img src="./Assets/Sheldon.jpeg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                              <h5 class="card-title" id="playerName">Sheldon Cooper</h5>
-                              <h4 class="card-title" id="position">Forward</h4>
-                              <a href="#" class="btn btn-primary">Edit</a>
-                              <a href="#" class="btn btn-primary">Delete</a>
-                            </div>
-                        </div>
-                        <div class="card" id="playerCard" style="width: 18rem;">
-                            <img src="./Assets/Piggy.jpeg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                              <h5 class="card-title" id="playerName">Miss Piggy</h5>
-                              <h4 class="card-title" id="position">Forward</h4>
-                              <a href="#" class="btn btn-primary">Edit</a>
-                              <a href="#" class="btn btn-primary">Delete</a>
-                            </div>
-                        </div>
-                        <div class="card" id="playerCard" style="width: 18rem;">
-                            <img src="" class="card-img-top" alt="...">
-                            <div class="card-body">
-                              <h5 class="card-title" id="playerName"></h5>
-                              <h4 class="card-title" id="position"></h4>
-                              <a href="#" class="btn btn-primary">Edit</a>
-                              <a href="#" class="btn btn-primary">Delete</a>
-                            </div>
-                        </div>
+                    <div id="playerList" class="card-group">
+
+                        
                     </div>
-                </div>
-                <div class="row g-4" id="defence">
-                    <div class="card-group">
-                        <div class="card" id="playerCard" style="width: 18rem;">
-                            <img src="" class="card-img-top" alt="...">
-                            <div class="card-body">
-                              <h5 class="card-title" id="playerName"></h5>
-                              <h4 class="card-title" id="position"></h4>
-                              <a href="#" class="btn btn-primary">Edit</a>
-                              <a href="#" class="btn btn-primary">Delete</a>
-                            </div>
-                        </div>
-                        <div class="card" id="playerCard" style="width: 18rem;">
-                            <img src="" class="card-img-top" alt="...">
-                            <div class="card-body">
-                              <h5 class="card-title" id="playerName"></h5>
-                              <h4 class="card-title" id="position"></h4>
-                              <a href="#" class="btn btn-primary">Edit</a>
-                              <a href="#" class="btn btn-primary">Delete</a>
-                            </div>
-                        </div>
-                        <div class="card" id="playerCard" style="width: 18rem;">
-                            <img src="" class="card-img-top" alt="...">
-                            <div class="card-body">
-                              <h5 class="card-title" id="playerName"></h5>
-                              <h4 class="card-title" id="position"></h4>
-                              <a href="#" class="btn btn-primary">Edit</a>
-                              <a href="#" class="btn btn-primary">Delete</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
+                <diiv>
             </div>
         </div>
     </div>
@@ -182,11 +127,20 @@
                  //put result data into html cards
 
                 result.forEach(result=>{
-                    document.querySelector('#playerName').innerHTML += `${result.first_name} + ${results.last_name}`
-                    document.querySelector('#position').innerHTML += `${result.position}`
-                    docuement.querySelector('.card-img-top').src+="...."
-
-
+                    document.querySelector('#playerList').innerHTML += `
+                    
+                    <div class="card" id="playerCard"style="width: 18rem;">
+                            <img src="" class="card-img-top" alt="...">
+                            <div class="card-body">
+                              <h5 class="card-title" id="playerName">${result.first_name} ${result.last_name}</h5>
+                              <h4 class="card-title" id="position">${result.position}</h4>
+                              <a href="#" class="btn btn-primary">Edit</a>
+                              <a href="#" class="btn btn-primary">Delete</a>
+                            </div>
+                        </div>
+                    `
+                                      
+                    // docuement.querySelector('.card-img-top').src+="...."
 
                 })
 

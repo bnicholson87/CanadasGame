@@ -10,21 +10,7 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-//This is no longer needed as the form upload is handled by the npm multer function
-//function formPost( url, data={} ){
+// function formPost( url, data={} ){
 //     // post requires header, method + data to be sent
 //     const postData = { 
 //         headers: { 'Content-Type': 'application/json' },
@@ -35,7 +21,7 @@
 // }	
 
 
-// async function addPlayer( event ){
+// async function addPlayer(  ){
 //     event.preventDefault()
 //     console.log(`button clicked`)
 

@@ -166,6 +166,23 @@
                  $('#sidebar').toggleClass('active');
                  $(this).toggleClass('active');
              });
+
+             let htmlname = location.href.replace(`.html`, '');
+             let name1 = htmlname.split("/");
+             const name = name1[3]
+                     
+             //cut the url into something
+             console.log(`this is the name pulled from html string`, name)
+         
+         
+             async function getTeam(name){  
+                 console.log(name)
+                 const result=await fetch(`/api/${name}`).then(r=>r.json());
+                 console.log(`this is the result of the getTeam`, result)
+                 //put result data into html cards
+
+             }
+             getTeam()
          });
      </script>
 </body>

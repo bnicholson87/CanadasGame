@@ -24,6 +24,22 @@ function router (app){
         res.send( playersList )
     })
 
+
+    // pull from db and generate html card
+    
+    
+    
+    
+    
+    app.get(`/api/:teamname`, async function(req, res){
+        let teamPlayers = orm.getTeam(req.params.teamname)
+        res.send(teamPlayers)
+    })
+
+
+
+
+
     // post, adjusted to account for photo upload by adding the upload.single
     app.post('/api/player/new', upload.single('avatar'), async function(req, res){
         
@@ -97,12 +113,20 @@ function router (app){
 
         const pUpdate = req.body
 
-        const saveResult = await orm.updatePlayer( pUpdate.id, pUpdate.first_name, pUpdate.last_name, pUpdate.position )
+        const saveResult = await orm.editPlayer( pUpdate.id, pUpdate.first_name, pUpdate.last_name, pUpdate.position )
         console.log( '... ', saveResult )
         res.send( { status: true, message: 'Updated successfully' } )
 
     }
     ) 
+
+
+
+
+
+
+
+
 
 }
 

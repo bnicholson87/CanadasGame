@@ -15,14 +15,10 @@ function newPlayer(firstName, lastName, birthDate, email, street, city, province
 }
 
 
-function editPlayer(id, firstName, lastName, birthDate, email, street, city, province, postalCode, friendName, position, skill, fieldname, originalname, encoding, mimetype, destination, filename, path){
-    const sql = `UPDATE INTO player (id, first_name, last_name, birth_date, email, street, city, province, postal_code, friend_first_name, position, experience_level, fieldname, originalname, encoding, mimetype, destination, filename, path) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`
+function editPlayer(id, firstName, lastName, position){
+    return db.query = `UPDATE player SET? WHERE id =?`, [{firstName,lastName, position}, id]
     
-    console.log(`about to save: `, sql)
-    
-    return db.query(sql, [id, firstName, lastName, birthDate, email, street, city, province, postalCode, friendName, position, skill, fieldname, originalname, encoding, mimetype, destination, filename, path])
-
-
+   
 }
 
 function deletedPlayer( id ){
@@ -30,7 +26,21 @@ function deletedPlayer( id ){
 }
 
 
-module.exports = {newPlayer, deletedPlayer}
+// grab by team
+
+
+function getTeam(name){
+    return db.query(`SELECT player.first_name, player.last_name, player.position, team.name
+    FROM player LEFT JOIN team ON player.coach_id = team.id
+    WHERE team.name = "${name}";` )
+
+}
+
+
+
+
+
+module.exports = {newPlayer, deletedPlayer, editPlayer, getTeam}
 
 
 

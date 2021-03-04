@@ -4,10 +4,10 @@ const db = require('./connection')('hockey_db', 'SummerSummer')
 
 
 
-function newPlayer(firstName, lastName, birthDate, email, street, city, postalCode, province, friendName, position, skill){
+function newPlayer(firstName, lastName, birthDate, email, street, city, province, postalCode, friendName, position, skill){
     const sql = `INSERT INTO player (first_name, last_name, birth_date, email, street, city, province, postal_code, friend_first_name, position, experience_level ) VALUES (?,?,?,?,?,?,?,?,?,?,?)`
     console.log(`about to save: `, sql)
-    return db.query(sql, [firstName, lastName, birthDate, email, street, city, postalCode, province, friendName, position, skill])
+    return db.query(sql, [firstName, lastName, birthDate, email, street, city, province, postalCode, friendName, position, skill])
 
 
 }

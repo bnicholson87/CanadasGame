@@ -60,13 +60,13 @@ app.post('/api/player/new', upload.single('avatar'), async function(req, res){
     var email = req.body.email;
     var street = req.body.street;
     var city = req.body.city;
-    var postalCode = req.body.postal;
+    var postalCode = req.body.postal_code;
     var province = req.body.province;
-    var friendName = req.body.friname1;
+    var friendName = req.body.friend_name;
     var position = req.body.position;
-    var skill = req.body.skill;
+    var skill = req.body.experience;
     var coach = req.body.coach;
-    const result = await orm.newPlayer(firstName, lastName, birthDate, email, street, city, postalCode, province, friendName, position, skill)
+    const result = await orm.newPlayer(firstName, lastName, birthDate, email, street, city, province, postalCode, friendName, position, skill)
 
     console.log( result )
 

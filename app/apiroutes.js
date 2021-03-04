@@ -1,7 +1,7 @@
 const orm = require('./orm');
 const fs = require('fs')
 const multer  = require('multer')
-const upload = multer({ dest: '../uploads/' })
+const upload = multer({ dest: './uploads/' })
 
 
 

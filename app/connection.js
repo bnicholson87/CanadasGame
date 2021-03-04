@@ -71,13 +71,6 @@ module.exports = dbConnect
 
 
 
-
-
-
-
-
-
-
 // require('dotenv').config();
 // let connection ;
 // if (process.env.JAWSDB_URL) {

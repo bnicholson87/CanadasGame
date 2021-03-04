@@ -15,12 +15,22 @@ function newPlayer(firstName, lastName, birthDate, email, street, city, province
 }
 
 
+function editPlayer(id, firstName, lastName, birthDate, email, street, city, province, postalCode, friendName, position, skill, fieldname, originalname, encoding, mimetype, destination, filename, path){
+    const sql = `UPDATE INTO player (id, first_name, last_name, birth_date, email, street, city, province, postal_code, friend_first_name, position, experience_level, fieldname, originalname, encoding, mimetype, destination, filename, path) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`
+    
+    console.log(`about to save: `, sql)
+    
+    return db.query(sql, [id, firstName, lastName, birthDate, email, street, city, province, postalCode, friendName, position, skill, fieldname, originalname, encoding, mimetype, destination, filename, path])
 
 
+}
+
+function deletedPlayer( id ){
+    return db.query( 'DELETE FROM player WHERE id=?', [ id ] )
+}
 
 
-
-module.exports = {newPlayer}
+module.exports = {newPlayer, deletedPlayer}
 
 
 

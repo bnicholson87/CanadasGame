@@ -2,11 +2,11 @@ const orm = require('./orm');
 const fs = require('fs')
 const multer  = require('multer')
 const crypto = require('crypto')
-// const upload = multer({ dest: './Assets/player_photos/' })
+
 
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, './Assets/player_photos/')
+      cb(null, 'public/assets/player_photos')
     },
     filename: (req, file, cb) => {
         let customFileName = crypto.randomBytes(18).toString('hex'),
@@ -18,16 +18,12 @@ var storage = multer.diskStorage({
   var upload = multer({ storage: storage })
 
 function router (app){
-
-
     // saving JSON to file
     const savePlayers = './.playersList.json'
-
 
     // Data ======================================================
     let playersList = fs.existsSync(savePlayers) ?
         JSON.parse( fs.readFileSync(savePlayers) ) : []
-
 
     // EndPoints =======================================================
 
@@ -36,12 +32,7 @@ function router (app){
         res.send( playersList )
     })
 
-
     // pull from db and generate html card
-    
-    
-    
-    
     
     app.get('/api/:teamname', async function(req, res){
         console.log(req.params.teamname)
@@ -49,16 +40,6 @@ function router (app){
         console.log(teamPlayers)
         res.send(teamPlayers)
     })
-
-    // app.get('/Assets/player_photos/:filename'), function(req, res){
-    //     console.log(req.params.filename)
-
-    //     res.contentType('image/jpeg');
-    //     res.send(result.image.buffer)
-
-    // }
-
-
 
     // post, adjusted to account for photo upload by adding the upload.single
     app.post('/api/player/new', upload.single('avatar'), async function(req, res){

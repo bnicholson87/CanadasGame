@@ -134,14 +134,13 @@
                  console.log(`this is the result of the getTeam`, result)
                  //put result data into html cards
 
-                 const photo = await fetch(`/billsTest/${result.filename}`).then(r=>r.json());
-                 console.log(`this is the file`, photo)
+
 
                 result.forEach(result=>{
                     document.querySelector('#playerList').innerHTML += `
                     
                     <div class="card" id="playerCard"style="width: 18rem;">
-                            <img src="/Assets/player_photo/${result.filename}.jpg" class="card-img-top" alt="...">
+                            <img src="assets/player_photos/${result.filename}" class="card-img-top" alt="...">
                             <div class="card-body">
                               <h5 class="card-title" id="playerName">${result.first_name} ${result.last_name}</h5>
                               <h4 class="card-title" id="position">${result.position}</h4>

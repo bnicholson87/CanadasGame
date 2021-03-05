@@ -29,10 +29,10 @@ function deletedPlayer( id ){
 // grab by team
 
 
-function getTeam(name){
-    return db.query(`SELECT player.first_name, player.last_name, player.position, team.name
+function getTeam(teamname){
+    return db.query(`SELECT player.first_name, player.last_name, player.position, player.filename, team.name
     FROM player LEFT JOIN team ON player.coach_id = team.id
-    WHERE team.name = "${name}";` )
+    WHERE team.name = "${teamname}";` )
 
 }
 

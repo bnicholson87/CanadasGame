@@ -1,9 +1,21 @@
 const orm = require('./orm');
 const fs = require('fs')
 const multer  = require('multer')
-const upload = multer({ dest: './uploads/' })
+const crypto = require('crypto')
+// const upload = multer({ dest: './Assets/player_photos/' })
 
-
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, './Assets/player_photos/')
+    },
+    filename: (req, file, cb) => {
+        let customFileName = crypto.randomBytes(18).toString('hex'),
+            fileExtension = file.originalname.split('.')[1] // get file extension from original file name
+            cb(null, customFileName + '.' + fileExtension)
+         }
+  })
+   
+  var upload = multer({ storage: storage })
 
 function router (app){
 
@@ -38,7 +50,13 @@ function router (app){
         res.send(teamPlayers)
     })
 
+    // app.get('/Assets/player_photos/:filename'), function(req, res){
+    //     console.log(req.params.filename)
 
+    //     res.contentType('image/jpeg');
+    //     res.send(result.image.buffer)
+
+    // }
 
 
 
@@ -48,6 +66,8 @@ function router (app){
         // this is a combined object which includes the photo details and the form post details
         const newPlayerData = req.body
         const newPlayerPhoto = req.file
+     
+        
         const newfullPlayerDetails = {
             ...newPlayerData,
             ...newPlayerPhoto

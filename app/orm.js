@@ -1,4 +1,4 @@
-const db = require('./connection')('hockey_db', 'rootroot')
+const db = require('./connection')('hockey_db', 'SummerSummer1')
 
 
 
@@ -15,11 +15,11 @@ function newPlayer(firstName, lastName, birthDate, email, street, city, province
 }
 
 
-function editPlayer(id, firstName, lastName, position){
-    return db.query = `UPDATE player SET? WHERE id =?`, [{firstName,lastName, position}, id]
+// function editPlayer(id, firstName, lastName, position){
+//     return db.query = `UPDATE player SET? WHERE id =?`, [{firstName,lastName, position}, id]
     
    
-}
+// }
 
 function deletePlayer( id ){
     console.log(`ormid`,id)
@@ -28,111 +28,31 @@ function deletePlayer( id ){
 
 
 // grab by team
-function getTeam(teamname){
+function getTeam(Larry){
     return db.query(`SELECT player.id, player.first_name, player.last_name, player.position, player.filename, team.name
     FROM player LEFT JOIN team ON player.coach_id = team.id
-    WHERE team.name = "${teamname}";` )
+    WHERE team.name = "${Larry}";` )
 
 }
 
 
 // get one player information
 function getPlayer(player){
-    return db.query('SELECT * FROM player WHERE id=?', [player])
+    console.log(player)
+    return db.query(`SELECT * FROM player WHERE id = ${player};`)
+}
+
+// grab by team
+function getAvailable(){
+  return db.query('SELECT id, first_name, last_name, position, filename FROM player WHERE coach_id IS NULL;')
+  
+
 }
 
 
-module.exports = {newPlayer, deletePlayer, getTeam, getPlayer}
+
+module.exports = {newPlayer, deletePlayer, getTeam, getPlayer, getAvailable}
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// DISPLAY Teams on each of their pages
-// ADD a player to player table using the registration page
-// ADD a player to a team
-// EDIT a player on a team
-// REMOVE a player from a team
-
-// const orm = {
-//     selectAll: function (player, cb) {
-//         connection.query(`SELECT * FROM ${player}`, (err, res) => {
-//             if (err) {
-//                 throw err;
-//             }
-//             cb(res);
-//         });
-//     },
-//     addPlayer: function (player, newPlayer, cb) {
-//         connection.query(
-//             `INSERT INTO ${player} SET ?`,
-//             newPlayer,
-//             (err, res) => {
-//                 if (err) {
-//                     throw err;
-//                 }
-//                 console.log(`${res.affectedRows} Player added\n`);
-//                 cb(res);
-//             })
-//     },
-//     newPlayer: function (firstName, lastName){
-//         connection.query(
-//             `INSERT INTO player VALUES (${firstName}, ${lastName})`, (err, res) => {
-//                 if (err) {
-//                     throw err;
-//                 }
-//                 console.log(res);
-//             });
-//     },
-
-//     editPlayerInfo: function (player, updateArray, cb) {
-//         const query = connection.query(
-//             `UPDATE ${player} SET ? WHERE ?`,
-//             updateArray,
-//             (err, res) => {
-//                 if (err) {
-//                     throw err;
-//                 }
-//                 console.log(`${res.affectedRows} Player info updated\n`);
-//                 cb(res);
-//             })
-//     },
-
-//     deletePlayer: function (player, condition, cb) {
-//         let queryString = `DELETE FROM ${player}`;
-//         queryString += ' WHERE ';
-//         queryString += condition;
-
-//         connection.query(queryString, (err, result) => {
-//             if (err) {
-//                 throw err;
-//             }
-
-//             cb(result);
-//         });
-//     }
-// }
-// function closeORM(){
-//     return connection.close()
-// }
-
-// module.exports = orm;

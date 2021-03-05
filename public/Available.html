@@ -59,7 +59,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a class="active" href="schedule.html">Schedule</a>
+                    <a class="active" href="available.html">Available Players</a>
                 </li>
                 <li>
                     <a href="Resources.html">Resources</a>
@@ -82,12 +82,14 @@
                         <i class="fas fa-align-justify"></i>
                     </button>
             
-                    <header>Game Schedule</header>
+                    <header>Available Players</header>
                 </div>
             </nav>
-            <!-- Schedule Input -->
-                
-           
+            <div class="container">
+                <div class="row" id="availablePlayers">
+                    <!-- Available Players -->
+                </div>
+            </div>
         </div>
     </div>
      <!-- jQuery CDN - Slim version (=without AJAX) -->
@@ -104,6 +106,48 @@
                  $(this).toggleClass('active');
              });
          });
+
+         function fetchJSON(url, method = 'get', data = {}) {
+            const fetchOptions = {
+                method,
+                headers: { 'Content-Type': 'application/json' },
+            }
+                if (method === 'post' || method === 'put')
+                    fetchOptions.body = JSON.stringify(data)
+
+                return fetch(url, fetchOptions).then(r => r.json())
+        }
+
+        // get players with no team/coach from db and populate html
+        async function getAvailable(){  
+            const result=await fetchJSON(`/api/available`, 'GET');
+            console.log(`this is the result of the getAvailable`, result)
+            //put result data into html cards
+
+
+            // populate html cards for players
+            result.forEach(result=>{
+            document.querySelector('#availablePlayers').innerHTML += `
+
+                <div class="col-sm-4"> 
+                    <div class="card h-200" id="playerCard">
+                        <p hidden id="playerId">${result.id}</p>
+                        <img src="assets/player_photos/${result.filename}" class="card-img-top" id="playerPhoto" alt="Player Photo">
+                        <div class="card-body">
+                            <h5 class="card-title" id="playerName">${result.first_name} ${result.last_name}</h5>
+                            <h4 class="card-title" id="position">${result.position}</h4>
+                            <a  href="playerUpdate.html" class="btn btn-primary" onclick="getPlayer(${result.id})">Edit</a>
+                            <a href="#" class="btn btn-primary" onclick="deletePlayer(${result.id})">Delete</a>
+                        </div>
+                    </div>
+                </div>
+                `
+            })
+        }
+        getAvailable()
+
+
+
      </script>
 
 </body>

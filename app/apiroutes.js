@@ -32,20 +32,29 @@ function router (app){
         res.send( playersList )
     })
 
-    app.get("/api/player/:id?", async function(req, res ){
-        console.log(`this is the id`,req.params.id);
-        const data = await orm.getPlayer( req.params.id );
-        res.send( data );
+    app.get("/api/player/edit/:id?", async function(req, res ){
+        console.log(`this is the id from SERVER`,req.params.id);
+        let player = await orm.getPlayer( req.params.id );
+        res.send( player );
       });
 
     // pull from db and generate html card
     
-    app.get('/api/:teamname', async function(req, res){
+    app.get('/api/team/:teamname', async function(req, res){
         console.log(req.params.teamname)
         let teamPlayers = await orm.getTeam(req.params.teamname)
         console.log(teamPlayers)
         res.send(teamPlayers)
     })
+    
+    app.get('/api/available', async function(req, res){
+        console.log('we are at api/available')
+        let availablePlayers = await orm.getAvailable()
+        console.log('These are the', availablePlayers)
+        res.send(availablePlayers)
+    })
+
+
 
     // post, adjusted to account for photo upload by adding the upload.single
     app.post('/api/player/new', upload.single('avatar'), async function(req, res){

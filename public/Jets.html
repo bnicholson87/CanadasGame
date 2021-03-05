@@ -60,7 +60,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="Schedule.html">Schedule</a>
+                    <a href="Available.html">Available Players</a>
                 </li>
                 <li>
                     <a href="Resources.html">Resources</a>
@@ -100,45 +100,68 @@
      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
  
      <script type="text/javascript">
-         $(document).ready(function () {
-             $('#sidebarCollapse').on('click', function () {
-                 $('#sidebar').toggleClass('active');
-                 $(this).toggleClass('active');
-             });
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+                $(this).toggleClass('active');
+            });
 
-             let htmlname = location.href.replace(`.html`, '');
-             let name1 = htmlname.split("/");
-             const name = name1[3]
-                     
-             //cut the url into something
-             console.log(`this is the name pulled from html string`, name)
-         
-         
-             async function getTeam(name){  
-                 console.log(name)
-                 const result=await fetch(`/api/${name}`).then(r=>r.json());
-                 console.log(`this is the result of the getTeam`, result)
-                 //put result data into html cards
+        });
+           
+       function fetchJSON(url, method = 'get', data = {}) {
+           const fetchOptions = {
+               method,
+               headers: { 'Content-Type': 'application/json' },
+           }
+               if (method === 'post' || method === 'put')
+                   fetchOptions.body = JSON.stringify(data)
 
-                result.forEach(result=>{
-                    document.querySelector('#playerList').innerHTML += `
-                    
-                    <div class="col-sm-4"> 
-                        <div class="card" id="playerCard">
-                                <img src="" class="card-img-top" alt="Player Photo">
-                            <div class="card-body">
-                                <h5 class="card-title" id="playerName">${result.first_name} ${result.last_name}</h5>
-                                <h4 class="card-title" id="position">${result.position}</h4>
-                                <a href="#" class="btn btn-primary">Edit</a>
-                                <a href="#" class="btn btn-primary">Delete</a>
-                            </div>
-                        </div>
-                    </div> 
-                    `
-                })
-             }
-             getTeam(name)
-         });
-     </script>
+               return fetch(url, fetchOptions).then(r => r.json())
+       }
+
+       // pull the team name out of the url
+       let htmlname = location.href.replace(`.html`, '');
+       let name1 = htmlname.split("/");
+       const name = name1[3]
+       
+       //cut the url into something
+       console.log(`this is the name pulled from html string`, name)
+       
+       // get players by team from db and populate html
+       async function getTeam(name){  
+           console.log(name)
+           const result=await fetch(`/api/team/${name}`).then(r=>r.json());
+           console.log(`this is the result of the getTeam`, result)
+           //put result data into html cards
+
+           // populate html cards for players
+           result.forEach(result=>{
+           document.querySelector('#playerList').innerHTML += `
+
+               <div class="col-sm-4"> 
+                   <div class="card h-200" id="playerCard">
+                       <p hidden id="playerId">${result.id}</p>
+                       <img src="assets/player_photos/${result.filename}" class="card-img-top" id="playerPhoto" alt="Player Photo">
+                       <div class="card-body">
+                           <h5 class="card-title" id="playerName">${result.first_name} ${result.last_name}</h5>
+                           <h4 class="card-title" id="position">${result.position}</h4>
+                           <a  href="playerUpdate.html" class="btn btn-primary" onclick="getPlayer(${result.id})">Edit</a>
+                           <a href="#" class="btn btn-primary" onclick="deletePlayer(${result.id})">Delete</a>
+                       </div>
+                   </div>
+               </div>
+               `
+           })
+       }
+       getTeam(name)
+
+       async function deletePlayer(id){
+           console.log(id)
+           const result = await fetchJSON(`/api/${id}`, 'DELETE');
+           console.log(`this is the result of the deletePlayer`, result)
+           location.reload()
+       }
+            
+   </script>
 </body>
 </html>

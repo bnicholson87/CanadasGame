@@ -217,34 +217,61 @@
 
      <script>
 
-			async function updatePlayer( event ){
-				event.preventDefault();
-				const playerID = document.querySelector('#id').value
+      function fetchJSON(url, method = 'get', data = {}) {
+            const fetchOptions = {
+                method,
+                headers: { 'Content-Type': 'application/json' },
+            }
+                if (method === 'post' || method === 'put')
+                    fetchOptions.body = JSON.stringify(data)
 
-				const quoteData = {
-					lastname: document.querySelector('#fname').value,
-				}
+                return fetch(url, fetchOptions).then(r => r.json())
+        }
+
+			// async function updatePlayer( event ){
+			// 	event.preventDefault();
+			// 	const playerID = document.querySelector('#id').value
+
+			// 	const quoteData = {
+			// 		lastname: document.querySelector('#fname').value,
+			// 	}
 
 
-        // RESTful PUT for updating an id
-        const result = await fetchJSON( `/api/player/${id}`, 'put', quoteData );
-        console.log( `put request result: `, result );
+      //   // RESTful PUT for updating an id
+      //   const result = await fetchJSON( `/api/player/${id}`, 'put', quoteData );
+      //   console.log( `put request result: `, result );
 		
+			// }
+
+
+
+      async function getPlayer(id){
+            const player = await fetchJSON( `/api/player/edit/${id}` );
+            console.log(`leafs page console player log: ` , player)
+ 
+			// loadPlayer(player);
 			}
 
-			async function getPlayer( id ){
-				const player = await fetch( `/api/player/${id}` );
-				console.log( `edit result: `, player[0] );
-
-				// fill in the form:
-				document.querySelector('#fname').value = player[0].first_name;
-
-				updatePlayer(  );
-			}
-
-      getPlayer(playerId)
 
 
+
+
+
+
+
+
+        // async function loadPlayer(id){
+        //   const result =await fetch(`/api/player/${id}`).then(r=>r.json());
+        //   console.log(`this is the result of the laodPlayer`, result)
+          
+          
+        //   document.querySelector('#fname').innterHTML = "BILL"
+
+
+        // }
+      
+        // loadPlayer()
+   
 
 
 

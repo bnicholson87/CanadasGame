@@ -94,10 +94,10 @@ function router (app){
 
 
     // delete, adjusted to account for photo upload by adding the upload.single
-    app.delete('/api/player/new/:id', async function(req, res){
-        const id = req.params.id
-        console.log(`[DELETE] id${id}`)
-        const deleteResults = await orm.deletePlayer(id)
+    app.delete('/api/:id', async function(req, res){
+        const playerid = req.params.id
+        console.log(`[DELETE] id ${playerid}`)
+        const deleteResults = await orm.deletePlayer(playerid)
         console.log(`...`, deleteResults)
 
         res.send({ status: true, message: 'Deleted successfully' })
@@ -132,16 +132,6 @@ function router (app){
 
 
 }
-
-
-
-
-
-
-
-
-
-
 
 
 

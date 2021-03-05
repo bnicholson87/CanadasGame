@@ -21,16 +21,15 @@ function editPlayer(id, firstName, lastName, position){
    
 }
 
-function deletedPlayer( id ){
+function deletePlayer( id ){
+    console.log(`ormid`,id)
     return db.query( 'DELETE FROM player WHERE id=?', [ id ] )
 }
 
 
 // grab by team
-
-
 function getTeam(teamname){
-    return db.query(`SELECT player.first_name, player.last_name, player.position, player.filename, team.name
+    return db.query(`SELECT player.id, player.first_name, player.last_name, player.position, player.filename, team.name
     FROM player LEFT JOIN team ON player.coach_id = team.id
     WHERE team.name = "${teamname}";` )
 
@@ -40,7 +39,7 @@ function getTeam(teamname){
 
 
 
-module.exports = {newPlayer, deletedPlayer, editPlayer, getTeam}
+module.exports = {newPlayer, deletePlayer, editPlayer, getTeam}
 
 
 

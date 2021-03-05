@@ -112,53 +112,74 @@
                  $(this).toggleClass('active');
              });
 
+         });
+            function fetchJSON(url, method = 'get', data = {}) {
+                const fetchOptions = {
+                    method,
+                    headers: { 'Content-Type': 'application/json' },
+                }
+                    if (method === 'post' || method === 'put')
+                        fetchOptions.body = JSON.stringify(data)
+
+                    return fetch(url, fetchOptions).then(r => r.json())
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+             // pull the team name out of the url
              let htmlname = location.href.replace(`.html`, '');
              let name1 = htmlname.split("/");
              const name = name1[3]
                      
-             //cut the url into something
              console.log(`this is the name pulled from html string`, name)
             
 
 
-
-
-
-
-
-
-         
+             // get players by team from db and populate html
              async function getTeam(name){  
                  console.log(name)
                  const result=await fetch(`/api/${name}`).then(r=>r.json());
                  console.log(`this is the result of the getTeam`, result)
                  //put result data into html cards
 
-
-
+                // populate html cards for players
                 result.forEach(result=>{
                     document.querySelector('#playerList').innerHTML += `
-                    
                     <div class="card" id="playerCard"style="width: 18rem;">
+                            <p hidden>${result.id}</p>
                             <img src="assets/player_photos/${result.filename}" class="card-img-top" alt="...">
                             <div class="card-body">
                               <h5 class="card-title" id="playerName">${result.first_name} ${result.last_name}</h5>
                               <h4 class="card-title" id="position">${result.position}</h4>
-                              <a href="#" class="btn btn-primary">Edit</a>
-                              <a href="#" class="btn btn-primary">Delete</a>
+                              <a onclick="editPlayer(${result.id})" href="#" class="btn btn-primary">Edit</a>
+                              <a href="#" class="btn btn-primary" onclick="deletePlayer(${result.id})">Delete</a>
                             </div>
                         </div>
                     `
-                                      
-                    
-
                 })
-
-                    
 
              }
              getTeam(name)
-         });
+
+             async function deletePlayer(id){
+                 console.log(id)
+                 const result = await fetchJSON(`/api/${id}`, 'DELETE');
+                 console.log(`this is the result of the deletePlayer`, result)
+                 location.reload()
+                 
+                
+             }
+             
+         
      </script>
 </body>
 </html>

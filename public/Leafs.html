@@ -134,7 +134,7 @@
         // get players by team from db and populate html
         async function getTeam(name){  
             console.log(name)
-            const result=await fetch(`/api/${name}`).then(r=>r.json());
+            const result=await fetch(`/api/team/${name}`).then(r=>r.json());
             console.log(`this is the result of the getTeam`, result)
             //put result data into html cards
 
@@ -165,6 +165,13 @@
         }
              
 
+        
+        async function getPlayer(id){
+            const player = await fetchJSON( `/api/player/edit/${id}`, 'GET' );
+            console.log(`leafs page console player log: ` , player)
+ 
+			// loadPlayer(player);
+			}
 
 
 

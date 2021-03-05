@@ -32,15 +32,15 @@ function router (app){
         res.send( playersList )
     })
 
-    app.get("/api/player/:id?", async function(req, res ){
-        console.log(`this is the id`,req.params.id);
-        const data = await orm.getPlayer( req.params.id );
-        res.send( data );
+    app.get("/api/player/edit/:id?", async function(req, res ){
+        console.log(`this is the id from SERVER`,req.params.id);
+        let player = await orm.getPlayer( req.params.id );
+        res.send( player );
       });
 
     // pull from db and generate html card
     
-    app.get('/api/:teamname', async function(req, res){
+    app.get('/api/team/:teamname', async function(req, res){
         console.log(req.params.teamname)
         let teamPlayers = await orm.getTeam(req.params.teamname)
         console.log(teamPlayers)

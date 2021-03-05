@@ -113,34 +113,27 @@
              });
 
          });
-            function fetchJSON(url, method = 'get', data = {}) {
-                const fetchOptions = {
-                    method,
-                    headers: { 'Content-Type': 'application/json' },
-                }
-                    if (method === 'post' || method === 'put')
-                        fetchOptions.body = JSON.stringify(data)
-
-                    return fetch(url, fetchOptions).then(r => r.json())
+            
+        function fetchJSON(url, method = 'get', data = {}) {
+            const fetchOptions = {
+                method,
+                headers: { 'Content-Type': 'application/json' },
             }
+                if (method === 'post' || method === 'put')
+                    fetchOptions.body = JSON.stringify(data)
+
+                return fetch(url, fetchOptions).then(r => r.json())
+        }
 
 
 
 
-
-
-
-
-
-
-
-
-             // pull the team name out of the url
-             let htmlname = location.href.replace(`.html`, '');
-             let name1 = htmlname.split("/");
-             const name = name1[3]
-                     
-             console.log(`this is the name pulled from html string`, name)
+            // pull the team name out of the url
+            let htmlname = location.href.replace(`.html`, '');
+            let name1 = htmlname.split("/");
+            const name = name1[3]
+                    
+            console.log(`this is the name pulled from html string`, name)
             
 
 
@@ -175,10 +168,28 @@
                  const result = await fetchJSON(`/api/${id}`, 'DELETE');
                  console.log(`this is the result of the deletePlayer`, result)
                  location.reload()
-                 
-                
              }
              
+
+             async function editPlayer( id ) {
+                console.log( `[editPlayer] update button pressed` )
+                event.preventDefault()
+
+                const playerUpdateData = (`
+                    <h1>HI</h1>`)
+                    // firstname: document.querySelector("#author").value.trim(),
+                    // lastname: document.querySelector("#quote").value.trim(),
+                    // position: document.querySelector("#quote").value.trim()
+                }
+
+                // const result = await fetchJSON( `/api/player/${id}`, 'PUT', playerUpdateData )
+                // console.log( `  << [PUTed to server] result=`, result )
+                // // Reload the page to get the updated list
+                // location.assign("/");
+            
+
+
+
          
      </script>
 </body>

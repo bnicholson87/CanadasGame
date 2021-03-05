@@ -107,13 +107,12 @@ function router (app){
 
 
     // put, update player information
-    app.put('/api/player/new', upload.single('avatar'), async function(req, res){
+    app.put('/api/player/:id', upload.single('avatar'), async function(req, res){
         
         console.log( '[PUT] we received this data:', req.body )
         if( !req.body.id ) {
             res.status(404).send( { message: 'Invalid id' } )
         }
-
         const pUpdate = req.body
 
         const saveResult = await orm.editPlayer( pUpdate.id, pUpdate.first_name, pUpdate.last_name, pUpdate.position )

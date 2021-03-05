@@ -8,7 +8,7 @@ VALUES ("Bugs", "Bunny", 1), ("Peppermint", "Patty", 2), ("Montgomery", "Burns",
 ("Aragorn", "son of Arathorn", 6), ("Harry", "Potter", 7);
 
 INSERT INTO player (first_name, last_name, birth_date, email, street, city, province, postal_code, friend_first_name, 
-friend_last_name, position, experience_level, coach_id)
+friend_last_name, position, experience_level, coach_id, fieldname, originalname, encoding, mimetype, destination, filename, path)
 VALUES ("Mr.", "Bean", "01/02/03", "test@test.com", "1 Bracondale Hill Rd", "Toronto", "ON", "M6G 3Z6", "null", "null", "Forward", "Beginner", 1), 
 ("Bullwinkle J.", "Moose", "04/05/06", "test@test.com", "1 Bracondale Hill Rd", "Toronto", "ON", "M6G 3Z6", "null", "null", "Forward", "Intermediate", 1), 
 ("Hermione", "Granger", "07/08/09", "test@test.com", "1 Bracondale Hill Rd", "Toronto", "ON", "M6G 3Z6", "null", "null", "Forward", "Expert", 1), 
@@ -51,3 +51,6 @@ VALUES ("Mr.", "Bean", "01/02/03", "test@test.com", "1 Bracondale Hill Rd", "Tor
 ("Spongebob", "Squrepants", "10/11/12", "test@test.com", "1 Bracondale Hill Rd", "Toronto", "ON", "M6G 3Z6", "null", "null", "Defense", "Beginner", 7),
 ("Susie", "Charmichael", "01/02/03", "test@test.com", "1 Bracondale Hill Rd", "Toronto", "ON", "M6G 3Z6", "null", "null", "Defense", "Intermediate", 7), 
 ("Sabrina", "Spellman", "04/05/06", "test@test.com", "1 Bracondale Hill Rd", "Toronto", "ON", "M6G 3Z6", "null", "null", "Goalie", "Expert", 7);
+
+
+

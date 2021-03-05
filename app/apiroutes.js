@@ -1,21 +1,29 @@
 const orm = require('./orm');
 const fs = require('fs')
 const multer  = require('multer')
-const upload = multer({ dest: './uploads/' })
+const crypto = require('crypto')
 
 
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, 'public/assets/player_photos')
+    },
+    filename: (req, file, cb) => {
+        let customFileName = crypto.randomBytes(18).toString('hex'),
+            fileExtension = file.originalname.split('.')[1] // get file extension from original file name
+            cb(null, customFileName + '.' + fileExtension)
+         }
+  })
+   
+  var upload = multer({ storage: storage })
 
 function router (app){
-
-
     // saving JSON to file
     const savePlayers = './.playersList.json'
-
 
     // Data ======================================================
     let playersList = fs.existsSync(savePlayers) ?
         JSON.parse( fs.readFileSync(savePlayers) ) : []
-
 
     // EndPoints =======================================================
 
@@ -24,12 +32,13 @@ function router (app){
         res.send( playersList )
     })
 
+    app.get("/api/player/:id?", async function(req, res ){
+        console.log(`this is the id`,req.params.id);
+        const data = await orm.getPlayer( req.params.id );
+        res.send( data );
+      });
 
     // pull from db and generate html card
-    
-    
-    
-    
     
     app.get('/api/:teamname', async function(req, res){
         console.log(req.params.teamname)
@@ -38,16 +47,14 @@ function router (app){
         res.send(teamPlayers)
     })
 
-
-
-
-
     // post, adjusted to account for photo upload by adding the upload.single
     app.post('/api/player/new', upload.single('avatar'), async function(req, res){
         
         // this is a combined object which includes the photo details and the form post details
         const newPlayerData = req.body
         const newPlayerPhoto = req.file
+     
+        
         const newfullPlayerDetails = {
             ...newPlayerData,
             ...newPlayerPhoto
@@ -93,10 +100,10 @@ function router (app){
 
 
     // delete, adjusted to account for photo upload by adding the upload.single
-    app.delete('/api/player/new/:id', async function(req, res){
-        const id = req.params.id
-        console.log(`[DELETE] id${id}`)
-        const deleteResults = await orm.deletePlayer(id)
+    app.delete('/api/:id', async function(req, res){
+        const playerid = req.params.id
+        console.log(`[DELETE] id ${playerid}`)
+        const deleteResults = await orm.deletePlayer(playerid)
         console.log(`...`, deleteResults)
 
         res.send({ status: true, message: 'Deleted successfully' })
@@ -106,13 +113,12 @@ function router (app){
 
 
     // put, update player information
-    app.put('/api/player/new', upload.single('avatar'), async function(req, res){
+    app.put('/api/player/:id', upload.single('avatar'), async function(req, res){
         
         console.log( '[PUT] we received this data:', req.body )
         if( !req.body.id ) {
             res.status(404).send( { message: 'Invalid id' } )
         }
-
         const pUpdate = req.body
 
         const saveResult = await orm.editPlayer( pUpdate.id, pUpdate.first_name, pUpdate.last_name, pUpdate.position )
@@ -131,16 +137,6 @@ function router (app){
 
 
 }
-
-
-
-
-
-
-
-
-
-
 
 
 

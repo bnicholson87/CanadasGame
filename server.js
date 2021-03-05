@@ -2,7 +2,6 @@ require( 'dotenv' ).config() // looks for .env ; process.env gets it's values
 
 const apiRouter = require('./app/apiroutes')
 
-const orm = require('./app/orm')
 const express = require('express')
 
 

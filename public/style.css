@@ -228,6 +228,10 @@ header {
     background:rgba(228, 227, 227, 0.5)
 
 }
+img #homePic{
+    width: auto;
+    height: 300px;
+}
 
 #friend{
 
@@ -239,14 +243,15 @@ header {
 #playerCard{
  padding: 10px;
  margin: 10px;
+ width: 300px;
+ height: 400px;
  border: solid black 1px;
  border-radius: 2px;
 }
-/* .img {
-    min-width: 100%;
+img {
     width: auto;
-    height: auto;
-} */
+    height: 200px;
+}
 h4 {
     font-size: 14pt;
     margin-top: 20px;
@@ -262,6 +267,11 @@ h4 {
 #newsStory {
     float: right;
 
+}
+.btn:hover {
+    background-color: red;
+    border: red;
+    
 }
 
 

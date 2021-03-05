@@ -28,10 +28,10 @@ function deletePlayer( id ){
 
 
 // grab by team
-function getTeam(teamname){
+function getTeam(Larry){
     return db.query(`SELECT player.id, player.first_name, player.last_name, player.position, player.filename, team.name
     FROM player LEFT JOIN team ON player.coach_id = team.id
-    WHERE team.name = "${teamname}";` )
+    WHERE team.name = "${Larry}";` )
 
 }
 
@@ -41,8 +41,16 @@ function getPlayer(player){
     return db.query('SELECT * FROM player WHERE id=?', [player])
 }
 
+// grab by team
+function getAvailable(){
+  return db.query('SELECT id, first_name, last_name, position, filename FROM player WHERE coach_id IS NULL;')
+  
 
-module.exports = {newPlayer, deletePlayer, getTeam, getPlayer}
+}
+
+
+
+module.exports = {newPlayer, deletePlayer, getTeam, getPlayer, getAvailable}
 
 
 

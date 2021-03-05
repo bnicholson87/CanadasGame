@@ -198,13 +198,6 @@ header {
     margin-left: 0px;
 }
 
-.card {
-    margin-top: 20px;
-    margin-bottom: 10px;
-    margin-left: 8px;
-    margin-right: 5px;
-    border: solid black 1px;
-}
 .registration {
  background-image:url("Assets/puck.jpg");
  background-size: cover;
@@ -235,39 +228,42 @@ header {
     background:rgba(228, 227, 227, 0.5)
 
 }
+
+#friend{
+
+    margin-top: 40px;
+}
 #floatingSelectGrid{
     margin-left: 10px;
 }
 #playerCard{
- width: 80px;
- margin-left: 5px;
  padding: 10px;
- margin: 5 px;
- border-left: solid black 1px;
+ margin: 10px;
+ border: solid black 1px;
  border-radius: 2px;
 }
-.img {
+/* .img {
     min-width: 100%;
     width: auto;
     height: auto;
-}
+} */
 h4 {
     font-size: 14pt;
+    margin-top: 20px;
     color: red;
 }
-#friend {
-    margin-top: 30px;
-}
-.carousel {
-    border: solid 1px black;
-    border-radius: 2px;
-    margin: 20px;
+.table{
     float: left;
-    padding: 20px;
 }
-h4 {
-    margin-top: 20px;
+#cardInfo {
+    position: center;
+    margin-top: 200px;  
 }
+#newsStory {
+    float: right;
+
+}
+
 
 /* ---------------------------------------------------
     MEDIAQUERIES

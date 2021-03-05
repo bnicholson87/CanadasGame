@@ -37,13 +37,13 @@
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Teams</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li>
-                            <a class="active" href="Leafs.html">Leafs</a>
+                            <a href="Leafs.html">Leafs</a>
                         </li>
                         <li>
                             <a href="Canadiens.html">Canadiens</a>
                         </li>
                         <li>
-                            <a href="Senators.html">Senators</a>
+                            <a class="active" href="Senators.html">Senators</a>
                         </li>
                         <li>
                             <a href="Canucks.html">Canucks</a>
@@ -54,7 +54,7 @@
                         <li>
                             <a href="Jets.html">Jets</a>
                         <li>
-                            <a href="Oilers.html">Oilers</a>
+                            <a href="Oliers.html">Oilers</a>
                         </li>
                         </li>
                     </ul>
@@ -71,7 +71,7 @@
             </ul>
         </nav>
         <!-- Page Content -->
-        <div id="content" id="leafs">
+        <div id="content" id="senators">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
                     <button type="button" id="sidebarCollapse" class="navbar-btn">
@@ -82,24 +82,24 @@
                     <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <i class="fas fa-align-justify"></i>
                     </button>
-                    <header> Leafs</header>
+                    <header>Senators</header>
                 </div>
             </nav>
             <div class="container">
-                <div class="row" id="playerList">
-                     <!-- Team information -->      
-                </div>
+                <div class="row"id="playerList">
+                        <!-- Team information -->   
+                </div>  
             </div>
         </div>
     </div>
      <!-- jQuery CDN - Slim version (=without AJAX) -->
-     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
      <!-- Popper.JS -->
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
      <!-- Bootstrap JS -->
-     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
  
-     <script type="text/javascript">
+    <script type="text/javascript">
          $(document).ready(function () {
              $('#sidebarCollapse').on('click', function () {
                  $('#sidebar').toggleClass('active');
@@ -123,22 +123,24 @@
                 result.forEach(result=>{
                     document.querySelector('#playerList').innerHTML += `
                     
-                    <div class="col-sm-4"> 
+                    <div class="col-sm-4">
                         <div class="card" id="playerCard">
-                                <img src="" class="card-img-top" alt="player photo">
+                            <img src="" class="card-img-top" alt="Player Photo">
                             <div class="card-body">
-                                <h5 class="card-title" id="playerName">${result.first_name} ${result.last_name}</h5>
-                                <h4 class="card-title" id="position">${result.position}</h4>
-                                <a href="#" class="btn btn-primary">Edit</a>
-                                <a href="#" class="btn btn-primary">Delete</a>
+                              <h5 class="card-title" id="playerName">${result.first_name} ${result.last_name}</h5>
+                              <h4 class="card-title" id="position">${result.position}</h4>
+                              <a href="#" class="btn btn-primary">Edit</a>
+                              <a href="#" class="btn btn-primary">Delete</a>
                             </div>
                         </div>
-                    </div> 
+                    </div>
                     `
                 })
+                // if (`${result.position}` = "Forward") {document.querySelector(".card").style.background = "yellow"} 
+                // else {document.querySelector(".card").style.background = "white"}
              }
              getTeam(name)
          });
-     </script>
+    </script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-const db = require('./connection')('hockey_db', 'SummerSummer')
+const db = require('./connection')('hockey_db', 'rootroot')
 
 
 

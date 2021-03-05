@@ -36,10 +36,13 @@ function getTeam(teamname){
 }
 
 
+// get one player information
+function getPlayer(player){
+    return db.query('SELECT * FROM player WHERE id=?', [player])
+}
 
 
-
-module.exports = {newPlayer, deletePlayer, editPlayer, getTeam}
+module.exports = {newPlayer, deletePlayer, getTeam, getPlayer}
 
 
 

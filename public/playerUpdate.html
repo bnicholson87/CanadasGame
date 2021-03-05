@@ -82,7 +82,7 @@
                         <i class="fas fa-align-justify"></i>
                     </button>
             
-                    <header> Player Registration </header>
+                    <header> Player Update </header>
                 </div>
             </nav>
             <!-- Registration Input -->
@@ -215,7 +215,61 @@
 
 
 
-     <script src="script.js"></script>
+     <script>
+
+			async function updatePlayer( event ){
+				event.preventDefault();
+				const playerID = document.querySelector('#id').value
+
+				const quoteData = {
+					lastname: document.querySelector('#fname').value,
+				}
+
+
+        // RESTful PUT for updating an id
+        const result = await fetchJSON( `/api/player/${id}`, 'put', quoteData );
+        console.log( `put request result: `, result );
+		
+			}
+
+			async function getPlayer( id ){
+				const player = await fetch( `/api/player/${id}` );
+				console.log( `edit result: `, player[0] );
+
+				// fill in the form:
+				document.querySelector('#fname').value = player[0].first_name;
+
+				updatePlayer(  );
+			}
+
+      getPlayer(playerId)
+
+
+
+
+
+
+
+
+
+
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     </script>
 
 </body>
 </html>

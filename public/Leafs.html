@@ -105,7 +105,7 @@
      <!-- Bootstrap JS -->
      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
  
-     <script type="text/javascript">
+    <script type="text/javascript">
          $(document).ready(function () {
              $('#sidebarCollapse').on('click', function () {
                  $('#sidebar').toggleClass('active');
@@ -128,70 +128,55 @@
 
 
 
-            // pull the team name out of the url
-            let htmlname = location.href.replace(`.html`, '');
-            let name1 = htmlname.split("/");
-            const name = name1[3]
+        // pull the team name out of the url
+        let htmlname = location.href.replace(`.html`, '');
+        let name1 = htmlname.split("/");
+        const name = name1[3]
                     
-            console.log(`this is the name pulled from html string`, name)
-            
+        console.log(`this is the name pulled from html string`, name)
+        
 
 
-             // get players by team from db and populate html
-             async function getTeam(name){  
-                 console.log(name)
-                 const result=await fetch(`/api/${name}`).then(r=>r.json());
-                 console.log(`this is the result of the getTeam`, result)
-                 //put result data into html cards
+        // get players by team from db and populate html
+        async function getTeam(name){  
+            console.log(name)
+            const result=await fetch(`/api/${name}`).then(r=>r.json());
+            console.log(`this is the result of the getTeam`, result)
+            //put result data into html cards
 
-                // populate html cards for players
-                result.forEach(result=>{
-                    document.querySelector('#playerList').innerHTML += `
-                    <div class="card" id="playerCard"style="width: 18rem;">
-                            <p hidden>${result.id}</p>
-                            <img src="assets/player_photos/${result.filename}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                              <h5 class="card-title" id="playerName">${result.first_name} ${result.last_name}</h5>
-                              <h4 class="card-title" id="position">${result.position}</h4>
-                              <a onclick="editPlayer(${result.id})" href="#" class="btn btn-primary">Edit</a>
-                              <a href="#" class="btn btn-primary" onclick="deletePlayer(${result.id})">Delete</a>
-                            </div>
-                        </div>
-                    `
-                })
+        // populate html cards for players
+        result.forEach(result=>{
+            document.querySelector('#playerList').innerHTML += `
+            <div class="card" id="playerCard"style="width: 18rem;">
+                    <p hidden id="playerId">${result.id}</p>
+                    <img src="assets/player_photos/${result.filename}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title" id="playerName">${result.first_name} ${result.last_name}</h5>
+                        <h4 class="card-title" id="position">${result.position}</h4>
+                        <a  href="playerUpdate.html" class="btn btn-primary" onclick="getPlayer(${result.id})">Edit</a>
+                        <a href="#" class="btn btn-primary" onclick="deletePlayer(${result.id})">Delete</a>
+                    </div>
+                </div>
+            `
+        })
 
-             }
-             getTeam(name)
+        }
+        getTeam(name)
 
-             async function deletePlayer(id){
-                 console.log(id)
-                 const result = await fetchJSON(`/api/${id}`, 'DELETE');
-                 console.log(`this is the result of the deletePlayer`, result)
-                 location.reload()
-             }
+        async function deletePlayer(id){
+            console.log(id)
+            const result = await fetchJSON(`/api/${id}`, 'DELETE');
+            console.log(`this is the result of the deletePlayer`, result)
+            location.reload()
+        }
              
 
-             async function editPlayer( id ) {
-                console.log( `[editPlayer] update button pressed` )
-                event.preventDefault()
 
-                const playerUpdateData = (`
-                    <h1>HI</h1>`)
-                    // firstname: document.querySelector("#author").value.trim(),
-                    // lastname: document.querySelector("#quote").value.trim(),
-                    // position: document.querySelector("#quote").value.trim()
-                }
-
-                // const result = await fetchJSON( `/api/player/${id}`, 'PUT', playerUpdateData )
-                // console.log( `  << [PUTed to server] result=`, result )
-                // // Reload the page to get the updated list
-                // location.assign("/");
-            
 
 
 
          
-     </script>
+    </script>
 </body>
 </html>
 

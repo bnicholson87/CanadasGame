@@ -32,6 +32,12 @@ function router (app){
         res.send( playersList )
     })
 
+    app.get("/api/player/:id?", async function(req, res ){
+        console.log(`this is the id`,req.params.id);
+        const data = await orm.getPlayer( req.params.id );
+        res.send( data );
+      });
+
     // pull from db and generate html card
     
     app.get('/api/:teamname', async function(req, res){

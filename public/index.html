@@ -142,7 +142,7 @@
             console.log(news)   
              
             news.forEach(news=> {
-                document.querySelector('#newsStory').innerHTML += `<li class="list-group-item" id="story0">${news.Title.link(news.url)}</li>`
+                document.querySelector('#newsStory').innerHTML += `<li class="list-group-item"><a href=${news.Url}>${news.Title}</a></li>`
             })    
 
         }

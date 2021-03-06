@@ -162,6 +162,19 @@
             location.reload()
         }
              
+
+        
+        async function getPlayer(id){
+            const player = await fetchJSON( `/api/player/edit/${id}`, 'GET' );
+            console.log(`leafs page console player log: ` , player)
+ 
+			// loadPlayer(player);
+			}
+
+
+
+
+         
     </script>
 </body>
 </html>

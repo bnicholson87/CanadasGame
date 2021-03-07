@@ -32,9 +32,10 @@ function router (app){
         res.send( playersList )
     })
 
-    app.get("/api/player/edit/:id?", async function(req, res ){
+    app.get("/api/player/edit/:id", async function(req, res ){
         console.log(`this is the id from SERVER`,req.params.id);
         let player = await orm.getPlayer( req.params.id );
+       
         res.send( player );
       });
 
@@ -122,26 +123,27 @@ function router (app){
 
 
     // put, update player information
-    app.put('/api/player/:id', upload.single('avatar'), async function(req, res){
-        
+    app.put('/api/player/update', upload.single('avatar'), async function(req, res){
+  
+
         console.log( '[PUT] we received this data:', req.body )
         if( !req.body.id ) {
             res.status(404).send( { message: 'Invalid id' } )
         }
-        const pUpdate = req.body
+        const firstName = req.body.first_name;
+        const lastName = req.body.last_name;
+        const id = req.body.id
 
-        const saveResult = await orm.editPlayer( pUpdate.id, pUpdate.first_name, pUpdate.last_name, pUpdate.position )
-        console.log( '... ', saveResult )
+        console.log(`[update button pushed] Here is the combined object with forma and photo details`, firstName, lastName, id)
+
+        const saveResult = await orm.updatePlayer( firstName, lastName, id )
+
+        console.log(saveResult)
+       
         res.send( { status: true, message: 'Updated successfully' } )
 
     }
     ) 
-
-
-
-
-
-
 
 
 

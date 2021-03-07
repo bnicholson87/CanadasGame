@@ -87,10 +87,10 @@
             </nav>
             <!-- Registration Input -->
                 <div class="container" id="input">
-                  <form  action="/api/player/new" method="post" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
+                  <form  action="/api/player/update" method="put" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
                     <div class="col-md-4">
                       <label for="validationCustom01" class="form-label">First name</label>
-                      <input id="fname" name="first_name" type="text" class="form-control" id="validationCustom01" value="Mark" required>
+                      <input id="fname" name="first_name" type="text" class="form-control" id="validationCustom01" value="" required>
                       <div class="valid-feedback">
                         Looks good!
                       </div>
@@ -140,7 +140,7 @@
                       <label for="validationCustom08" class="form-label">Province</label>
                        <select id="prov" name="province" class="form-select" id="floatingSelectGrid" aria-label="Floating label select example">
                           <option selected>Choose...</option>
-                          <option value="Ontario">Ontario</option>
+                          <option value="Ontario">ON</option>
                         </select>
                  
                     </div>
@@ -196,7 +196,7 @@
                     
 
                     <div class="col-12">
-                      <input type="submit" value="Submit form!" class="btn btn-primary"> 
+                      <input type="submit" value="Update form!" class="btn btn-primary"> 
                     </div>
 
                     <div id= "#playersinformation"> </div>
@@ -217,86 +217,39 @@
 
      <script>
 
-      function fetchJSON(url, method = 'get', data = {}) {
-            const fetchOptions = {
-                method,
-                headers: { 'Content-Type': 'application/json' },
-            }
-                if (method === 'post' || method === 'put')
-                    fetchOptions.body = JSON.stringify(data)
-
-                return fetch(url, fetchOptions).then(r => r.json())
-        }
-
-			// async function updatePlayer( event ){
-			// 	event.preventDefault();
-			// 	const playerID = document.querySelector('#id').value
-
-			// 	const quoteData = {
-			// 		lastname: document.querySelector('#fname').value,
-			// 	}
 
 
-      //   // RESTful PUT for updating an id
-      //   const result = await fetchJSON( `/api/player/${id}`, 'put', quoteData );
-      //   console.log( `put request result: `, result );
+
+
+        async function getPlayer(){
+          const id = location.hash.substr(1)
+          console.log(`did we get an id`, id)
+            let player = await fetch( `/api/player/edit/${id}`).then(r=>r.json());
+            player=player[0]
+            console.log(` page console player log: `, player)
+            document.querySelector('#fname').value = `${player.first_name}`
+            document.querySelector('#lname').value = `${player.last_name}`
+            document.querySelector('#dob').value = `${player.birth_date}`
+            document.querySelector('#email').value = `${player.email}`
+            document.querySelector('#street').value = `${player.street}`
+            document.querySelector('#city').value = `${player.city}`
+            document.querySelector('#prov').value = `${player.province}`
+            document.querySelector('#postal').value = `${player.postal_code}`
+            document.querySelector('#inputFriend').value = `${player.birth_date}`
+            document.querySelector('#pos').value = `${player.position}`
+            document.querySelector('#skill').value = `${player.experience_level}`
+
 		
-			// }
-
-
-
-      async function getPlayer(id){
-            const player = await fetchJSON( `/api/player/edit/${id}` );
-            console.log(`leafs page console player log: ` , player)
- 
-			// loadPlayer(player);
 			}
+     
+      getPlayer()
 
 
 
 
 
 
-
-
-
-        // async function loadPlayer(id){
-        //   const result =await fetch(`/api/player/${id}`).then(r=>r.json());
-        //   console.log(`this is the result of the laodPlayer`, result)
-          
-          
-        //   document.querySelector('#fname').innterHTML = "BILL"
-
-
-        // }
-      
-        // loadPlayer()
-   
-
-
-
-
-
-
-
-
-
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-     </script>
+    </script>
 
 </body>
 </html>

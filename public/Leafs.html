@@ -145,7 +145,7 @@
                         <div class="card-body">
                             <h5 class="card-title" id="playerName">${result.first_name} ${result.last_name}</h5>
                             <h4 class="card-title" id="position">${result.position}</h4>
-                            <a  href="playerUpdate.html" class="btn btn-primary" onclick="getPlayer(${result.id})">Edit</a>
+                            <a  href="playerUpdate.html#${result.id}" class="btn btn-primary">Edit</a>
                             <a href="#" class="btn btn-primary" onclick="deletePlayer(${result.id})">Delete</a>
                         </div>
                     </div>
@@ -163,13 +163,16 @@
         }
              
 
-        
         async function getPlayer(id){
-            const player = await fetchJSON( `/api/player/edit/${id}`, 'GET' );
-            console.log(`leafs page console player log: ` , player)
+          console.log(`did we get an id`, id)
+            let player = await fetch( `/api/player/edit/${id}`).then(r=>r.json());
+            console.log(` page console player log: `, player)
+            document.querySelector('#fname').value = `${player.first_name}`
  
-			// loadPlayer(player);
+		
 			}
+        
+   
 
 
 

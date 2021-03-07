@@ -138,11 +138,11 @@
          });
 
         async function getNHL(){
-            news = await fetch('https://api.sportsdata.io/v3/nhl/scores/json/News?key=7e6ae033b7cd4670ba5b1fb51d7b2592' ).then(r=>r.json())
+            news = await fetch(`https://api.sportsdata.io/v3/nhl/scores/json/NewsByDate/${today}?key=7e6ae033b7cd4670ba5b1fb51d7b2592`).then(r=>r.json())
             console.log(news)   
              
             news.forEach(news=> {
-                document.querySelector('#newsStory').innerHTML += `<li class="list-group-item" id="story0">${news.Title.link(news.url)}</li>`
+                document.querySelector('#newsStory').innerHTML += `<li class="list-group-item"><a href=${news.Url}>${news.Title}</a></li>`
             })    
 
         }

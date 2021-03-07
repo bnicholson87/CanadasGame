@@ -157,7 +157,7 @@
 
         async function deletePlayer(id){
             console.log(id)
-            const result = await fetchJSON(`/api/${id}`, 'DELETE');
+            const result = await fetchJSON(`/api/player/delete/${id}`, 'DELETE');
             console.log(`this is the result of the deletePlayer`, result)
             location.reload()
         }

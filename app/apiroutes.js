@@ -97,7 +97,7 @@ function router (app){
 
         const result = await orm.newPlayer(firstName, lastName, birthDate, email, street, city, province, postalCode, friendName, position, skill, fieldname, originalname, encoding, mimetype, destination, filename, path)
 
-        console.log( result )
+        console.log( `this is the result of of the router for await ormNewPlyaer`, result )
           
         // adding to playerList and pushing file details to JSON list
         playersList.push(newfullPlayerDetails)
@@ -110,7 +110,7 @@ function router (app){
 
 
     // delete, adjusted to account for photo upload by adding the upload.single
-    app.delete('/api/:id', async function(req, res){
+    app.delete('/api/player/delete/:id', async function(req, res){
         const playerid = req.params.id
         console.log(`[DELETE] id ${playerid}`)
         const deleteResults = await orm.deletePlayer(playerid)
@@ -123,24 +123,63 @@ function router (app){
 
 
     // put, update player information
-    app.put('/api/player/update', upload.single('avatar'), async function(req, res){
-  
+    app.post('/api/player/update',  upload.single('avatar'), async function(req, res){
+        
+
+        // this is a combined object which includes the photo details and the form post details
+        const updatedPlayerData = req.body
+          
+
+        console.log(`[submit button pushed] Here is the id:`, req.body.playerid)
+
+        console.log(`[submit button pushed] Here is the body`, updatedPlayerData)
+        console.log(`this is the file details`, req.file)
+
 
         console.log( '[PUT] we received this data:', req.body )
-        if( !req.body.id ) {
+        if( !req.body.playerid ) {
             res.status(404).send( { message: 'Invalid id' } )
         }
         const firstName = req.body.first_name;
         const lastName = req.body.last_name;
-        const id = req.body.id
+        const id = req.body.playerid
+        const birthDate = req.body.birth_date;
+        const email = req.body.email;
+        const street = req.body.street;
+        const city = req.body.city;
+        const postalCode = req.body.postal_code;
+        const province = req.body.province;
+        const friendName = req.body.friend_name;
+        const position = req.body.position;
+        const skill = req.body.experience;
+        const coach = req.body.coach;
+        const fieldname =  req.file && req.file.fieldname ? req.file.fieldname : "";
+        const originalname = req.file && req.file.originalname ? req.file.originalname: "";
+        const encoding = req.file && req.file.encoding ? req.file.encoding: "";
+        const mimetype = req.file && req.file.mimetype ? req.file.mimetype: "";
+        const destination = req.file && req.file.destination ? req.file.destination : "";
+        const filename = req.file && req.file.filename ? req.file.filename: "";
+        const path = req.file && req.file.path ? req.file.path: "";
 
-        console.log(`[update button pushed] Here is the combined object with forma and photo details`, firstName, lastName, id)
+        console.log(`[update button pushed] Here is the combined object with forma and photo details`, firstName, lastName, birthDate, email, street, city, postalCode, province, friendName, position, skill, fieldname, originalname, encoding, mimetype, destination, filename, path, id)
 
-        const saveResult = await orm.updatePlayer( firstName, lastName, id )
-
-        console.log(saveResult)
+        if (req.file === undefined){
+            const saveResult = await orm.updatePlayer( id, firstName, lastName, birthDate, email, street, city, postalCode, province, friendName, position, skill, id )
+            console.log(saveResult)
        
-        res.send( { status: true, message: 'Updated successfully' } )
+            res.send( saveResult )
+
+        } else {
+            const saveResult = await orm.updatePlayerwPhoto( id, firstName, lastName, birthDate, email, street, city, postalCode, province, friendName, position, skill, fieldname, originalname, encoding, mimetype, destination, filename, path, id )
+            console.log(saveResult)
+       
+            res.send( saveResult )
+
+        }
+
+
+
+
 
     }
     ) 

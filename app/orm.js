@@ -15,23 +15,19 @@ function newPlayer(firstName, lastName, birthDate, email, street, city, province
 }
 
 
-// function updatePlayer(firstName, lastName, birthDate, email, street, city, province, postalCode, friendName, position, skill, fieldname, originalname, encoding, mimetype, destination, filename, path){
-//     const sql = `UDPATE player SET (first_name, last_name, birth_date, email, street, city, province, postal_code, friend_first_name, position, experience_level, fieldname, originalname, encoding, mimetype, destination, filename, path) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`
-    
-//     console.log(`about to save: `, sql)
-    
-//     return db.query(sql, [firstName, lastName, birthDate, email, street, city, province, postalCode, friendName, position, skill, fieldname, originalname, encoding, mimetype, destination, filename, path])
-
-
-// }
-
-
-
-
-function updatePlayer( id, firstname, lastname ){
-    const sql = `UPDATE player SET ? WHERE id = ?`
-    return db.query( sql, [ firstname, lastname, id] )
+function updatePlayer(id, first_name, last_name, birth_date, email, street, city, postal_code, province, friend_first_name, position, experience){
+    const sql = `UPDATE player SET first_name = ?, last_name = ?, birth_date = ?, email = ?, street = ?, city = ?, postal_code = ?, province = ?, friend_first_name = ?, position = ?, experience_level = ? WHERE id = ?`
+    return db.query( sql, [ first_name, last_name, birth_date, email, street, city, postal_code, province, friend_first_name, position, experience, id ] )
 }
+
+function updatePlayerwPhoto(id, first_name, last_name, birth_date, email, street, city, postal_code, province, friend_first_name, position, experience, fieldname, originalname, encoding, mimetype, destination, filename, path,){
+    const sql = `UPDATE player SET first_name = ?, last_name = ?, birth_date = ?, email = ?, street = ?, city = ?, postal_code = ?, province = ?, friend_first_name = ?, position = ?, experience_level = ?,  fieldname = ?, originalname = ?, encoding = ?, mimetype = ?, destination = ?, filename = ?, path=? WHERE id = ?`
+    return db.query( sql, [ first_name, last_name, birth_date, email, street, city, postal_code, province, friend_first_name, position, experience, fieldname, originalname, encoding, mimetype, destination, filename, path, id ] )
+}
+
+
+
+
 
 function deletePlayer( id ){
     console.log(`ormid`,id)
@@ -50,7 +46,7 @@ function getTeam(Larry){
 
 // get one player information
  async function getPlayer(player){
-    console.log(`orm player id`, player)
+    console.log(`orm get player id`, player)
     const sql = `SELECT * FROM player WHERE id = ${player};`
     let a = await db.query(`SELECT * FROM player WHERE id = ${player};`) 
     console.log(a)
@@ -65,7 +61,7 @@ function getAvailable(){
 
 
 
-module.exports = {newPlayer, deletePlayer, getTeam, getPlayer, getAvailable, updatePlayer}
+module.exports = {newPlayer, deletePlayer, getTeam, getPlayer, getAvailable, updatePlayer, updatePlayerwPhoto}
 
 
 

@@ -228,7 +228,7 @@ header {
     background:rgba(228, 227, 227, 0.5)
 
 }
-img #homePic{
+#homePic{
     width: auto;
     height: 300px;
 }
@@ -238,7 +238,7 @@ img #homePic{
     margin-top: 40px;
 }
 #floatingSelectGrid{
-    margin-left: 10px;
+    margin-left: 30px;
 }
 #playerCard{
  padding: 10px;
@@ -249,8 +249,8 @@ img #homePic{
  border-radius: 2px;
 }
 img {
-    width: auto;
-    height: 200px;
+    width: 150px;
+    height: 150px;
 }
 h4 {
     font-size: 14pt;
@@ -259,6 +259,12 @@ h4 {
 }
 .table{
     float: left;
+}
+#contactLG{
+    width: 400px;
+    height: auto;
+
+
 }
 #cardInfo {
     position: center;

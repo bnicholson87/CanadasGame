@@ -148,6 +148,24 @@
 
 
 
+
+        async function deletePlayer(id){
+            console.log(id)
+            const result = await fetchJSON(`/api/player/delete/${id}`, 'DELETE');
+            console.log(`this is the result of the deletePlayer`, result)
+            location.reload()
+        }
+             
+
+        async function getPlayer(id){
+          console.log(`did we get an id`, id)
+            let player = await fetch( `/api/player/edit/${id}`).then(r=>r.json());
+            console.log(` page console player log: `, player)
+            document.querySelector('#fname').value = `${player.first_name}`
+ 
+		
+			}
+
      </script>
 
 </body>

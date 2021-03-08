@@ -104,8 +104,9 @@ function router (app){
 
         // writing player JSON list to a file
         fs.writeFileSync(savePlayers, JSON.stringify(playersList))
+        
 
-        res.send(newfullPlayerDetails)
+        res.send({ status: true, message: 'Added successfully' })
     }) 
 
 
@@ -174,6 +175,7 @@ function router (app){
             console.log(saveResult)
        
             res.send( saveResult )
+            
 
         }
 

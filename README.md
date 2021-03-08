@@ -30,3 +30,8 @@
   ## License
   
   None
+
+  Screenshot: ![alt text](CanadasGameScreenshot.png)
+
+  https://github.com/bnicholson87/CanadasGame.git
+  https://hockeyregapplication.herokuapp.com/index.html

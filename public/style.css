@@ -249,8 +249,8 @@ header {
  border-radius: 2px;
 }
 img {
-    width: 150px;
-    height: 150px;
+    width: 100%;
+    height: 225px;
 }
 h4 {
     font-size: 14pt;

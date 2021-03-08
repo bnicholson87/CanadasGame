@@ -106,7 +106,9 @@ function router (app){
         fs.writeFileSync(savePlayers, JSON.stringify(playersList))
         
 
-        res.send({ status: true, message: 'Added successfully' })
+        res.redirect('/Available.html')
+
+        
     }) 
 
 
@@ -168,13 +170,13 @@ function router (app){
             const saveResult = await orm.updatePlayer( id, firstName, lastName, birthDate, email, street, city, postalCode, province, friendName, position, skill, id )
             console.log(saveResult)
        
-            res.send( saveResult )
+            res.redirect('/index.html')
 
         } else {
             const saveResult = await orm.updatePlayerwPhoto( id, firstName, lastName, birthDate, email, street, city, postalCode, province, friendName, position, skill, fieldname, originalname, encoding, mimetype, destination, filename, path, id )
             console.log(saveResult)
        
-            res.send( saveResult )
+            res.redirect('/index.html')
             
 
         }
@@ -185,6 +187,9 @@ function router (app){
 
     }
     ) 
+
+
+
 
 
 
